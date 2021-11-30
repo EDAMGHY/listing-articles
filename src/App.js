@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from 'react';
+import Search from './components/Search';
+import Cards from './components/Cards';
+
+import './index.css';
 
 function App() {
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = React.useState('');
+  console.log(articles);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Fragment>
+        <Search
+          articles={articles}
+          setArticles={setArticles}
+          search={search}
+          setSearch={setSearch}
+          setIsLoading={setIsLoading}
+          isLoading={isLoading}
+        />
+        <Cards articles={articles} isLoading={isLoading} />
+      </Fragment>
     </div>
   );
 }
