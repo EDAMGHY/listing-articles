@@ -3,7 +3,7 @@ import data from '../data/articles';
 
 const Search = ({ setIsLoading, setArticles, search, setSearch }) => {
   const fetched = () => {
-    const filtered = data.filter((d) => d.title.includes(search.toLowerCase()));
+    const filtered = data.filter((d) => d.title.includes(search));
     setArticles(filtered);
     console.log(search);
     setIsLoading(true);
