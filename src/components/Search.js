@@ -1,16 +1,25 @@
 import React from 'react';
 import data from '../data/articles';
-
 const Search = ({ setIsLoading, setArticles, search, setSearch }) => {
   const fetched = () => {
-    const filtered = data.filter((d) => d.title.includes(search));
-    setArticles(filtered);
-    console.log(search);
     setIsLoading(true);
+    const filtered = data.filter((d) => {
+      if (search === '') return d;
+      else if (d.title.toLowerCase().includes(search.toLowerCase())) return d;
+      return null;
+    });
+    setArticles(filtered);
+    setIsLoading(false);
   };
 
   React.useEffect(() => {
-    fetched();
+    if (search !== '') {
+      setIsLoading(false);
+      fetched();
+    } else {
+      setIsLoading(true);
+      setArticles([]);
+    }
     // eslint-disable-next-line
   }, [search]);
 
@@ -22,7 +31,6 @@ const Search = ({ setIsLoading, setArticles, search, setSearch }) => {
         </button>
         <input
           type='text'
-          value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder='Search...'
         />

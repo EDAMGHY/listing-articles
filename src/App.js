@@ -8,7 +8,6 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = React.useState('');
-  console.log(articles);
 
   return (
     <div className='container'>
@@ -21,6 +20,7 @@ function App() {
           setIsLoading={setIsLoading}
           isLoading={isLoading}
         />
+
         <Cards articles={articles} isLoading={isLoading} />
       </Fragment>
     </div>

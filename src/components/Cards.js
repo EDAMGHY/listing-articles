@@ -1,6 +1,6 @@
 import React from 'react';
+import Loading from './Loading';
 import Card from '../components/Card';
-import Loading from '../components/Loading';
 const Cards = ({ articles, isLoading }) => {
   if (isLoading) {
     return <Loading />;
